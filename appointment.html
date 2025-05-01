@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="appointment.css">
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCN7IMQBXb1gPY7NifAjxYp4bSUr_f2P04",
+            authDomain: "toothfullyyours-b7f41.firebaseapp.com",
+            projectId: "toothfullyyours-b7f41",
+            storageBucket: "toothfullyyours-b7f41.appspot.com",
+            messagingSenderId: "470168333871",
+            appId: "1:470168333871:web:87c427f4b05c3dde40a0da"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Handle form submission
+        const form = document.getElementById("appointment-form");
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+            const message = document.getElementById("message").value;
+
+            // Save data to Firebase Realtime Database
+            const appointmentsRef = ref(database, 'appointments');
+            const newAppointmentRef = push(appointmentsRef);
+            set(newAppointmentRef, {
+                name: name,
+                email: email,
+                date: date,
+                time: time,
+                message: message,
+                timestamp: Date.now()
+            }).then(() => {
+                alert("Appointment booked successfully!");
+                form.reset(); // Clear form after successful submission
+            }).catch(error => {
+                alert("Error saving appointment: " + error.message);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Book an Appointment</h1>
+        <form id="appointment-form" class="appointment-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="date">Preferred Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Preferred Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="message">Additional Notes:</label>
+            <textarea id="message" name="message" placeholder="Any additional information" rows="4"></textarea>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+</body>
+</html>

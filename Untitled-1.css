@@ -1,0 +1,167 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #080505;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  color: #0084ffc5;
+}
+
+a {
+  text-decoration: none;
+  color: #0505b1bb;
+}
+
+header {
+  background: rgb(37, 46, 126);
+  color: #265f97;
+  padding: 20px 0;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  margin: auto;
+}
+
+header .logo img {
+  height: 150px;
+  margin-right: 25px;
+  border-radius: 50%;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding: 10px 0;
+  position: absolute;
+  width: 98%;
+  top:0;
+  left: 0;
+  z-index: 1000;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li a {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.hero {
+  background: url('dental-tools-equipment-white-background.jpg') no-repeat center center/cover;
+  color: #056af0;
+  text-align: center;
+  padding: 200px 0;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background: #e67e22;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.about {
+  padding: 25px;
+  text-align: center;
+}
+
+.services {
+  background: #f4f4f4;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.service-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.service-item {
+  background: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 30%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-item i {
+  font-size: 2rem;
+  color: #f4d03f;
+}
+
+.team {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.member {
+  background: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 30%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.member img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+footer {
+  background: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.social-links a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 1.2rem;
+}
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}

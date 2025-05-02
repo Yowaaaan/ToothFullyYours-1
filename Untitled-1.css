@@ -30,12 +30,12 @@ header {
 header .logo {
   display: flex;
   align-items: center;
-  margin-left: 50px;
+  margin-left: 40px;
   margin: auto;
 }
 
 header .logo img {
-  height: 150px;
+  height: 90px;
   margin-right: 25px;
   border-radius: 50%;
 }

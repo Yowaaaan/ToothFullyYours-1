@@ -21,6 +21,12 @@ a {
   color: #0505b1bb;
 }
 
+header nav {
+  position: absolute;
+  top: 20px;    /* Distance from top */
+  right: 20px;  /* Distance from the right edge */
+}
+
 header {
   background: rgb(37, 46, 126);
   color: #265f97;
@@ -44,7 +50,7 @@ header nav ul {
   list-style: none;
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 0;
   margin: 0;

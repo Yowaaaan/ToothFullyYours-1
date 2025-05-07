@@ -1,7 +1,7 @@
-import { } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js"
-import { } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
-
+// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCN7IMQBXb1gPY7NifAjxYp4bSUr_f2P04",
     authDomain: "toothfullyyours-b7f41.firebaseapp.com",
@@ -12,8 +12,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 // Handle form submission
 const form = document.getElementById("appointment-form");
@@ -27,9 +27,9 @@ form.addEventListener("submit", function (event) {
     const message = document.getElementById("message").value;
 
     // Save data to Firebase Realtime Database
-    const appointmentsRef = database.ref("appointments");
-    const newAppointmentRef = appointmentsRef.push();
-    newAppointmentRef.set({
+    const appointmentsRef = ref(database, 'appointments');
+    const newAppointmentRef = push(appointmentsRef);
+    set(newAppointmentRef, {
         name: name,
         email: email,
         date: date,
@@ -37,8 +37,22 @@ form.addEventListener("submit", function (event) {
         message: message,
         timestamp: Date.now()
     }).then(() => {
-        alert("Appointment booked successfully!");
-        form.reset(); // Clear form after successful submission
+        // Show notification
+        document.getElementById("invoice-notification-name").innerText = name;
+        document.getElementById("invoice-notification-date").innerText = date;
+        document.getElementById("invoice-notification-time").innerText = time;
+        document.getElementById("invoice-notification-message").innerText = message || "No additional notes";
+
+        // Show the notification
+        document.getElementById("invoice-notification").classList.add("show");
+
+        // Hide the notification after 5 seconds
+        setTimeout(() => {
+            document.getElementById("invoice-notification").classList.remove("show");
+        }, 5000);  // Notification will disappear after 5 seconds
+
+        // Reset the form after submission
+        form.reset();
     }).catch(error => {
         alert("Error saving appointment: " + error.message);
     });

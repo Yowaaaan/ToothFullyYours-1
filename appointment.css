@@ -1,67 +1,149 @@
-* {
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom, #E0F7FA, #FFFFFF);
+  color: #333;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url(bakgrawnd.jfif);
+  font-size: 14px;
 }
 
 .container {
-  background-color: #fff;
-  padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
   border-radius: 8px;
-  width: 400px;
-  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
+  text-align: center;
+  color: #00796B;
   margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
 }
 
-.appointment-form {
+.appointment-form label {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0 12px;
+  font-size: 16px;
+  color: #00796B;
 }
 
-label {
-  text-align: left;
-  margin-bottom: 5px;
-  color: #555;
-}
-
-input, textarea {
-  padding: 10px;
+.appointment-form input,
+.appointment-form textarea,
+.appointment-form button {
+  width: 100%;
+  padding: 5px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  border: 1px solid #B2DFDB;
+  border-radius: 7px;
+  font-size: 15px;
+  background-color: #F1F8E9;
 }
 
-textarea {
-  resize: vertical;
+.appointment-form input:focus,
+.appointment-form textarea:focus {
+  border-color: #00796B;
+  outline: none;
 }
 
-button {
-  padding: 12px;
-  background-color: #4CAF50;
+.appointment-form button {
+  background-color: #00796B;
   color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #45a049;
+.appointment-form button:hover {
+  background-color: #004D40;
+}
+
+#invoice-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#invoice-overlay.show {
+  display: flex;
+}
+
+.invoice {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  text-align: left;
+}
+
+.invoice h2 {
+  text-align: center;
+  color: #00796B;
+  font-size: 18px;
+}
+
+.invoice p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.invoice-overlay-btn {
+  display: block;
+  margin-top: 10px;
+  background-color: #00796B;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.invoice-overlay-btn:hover {
+  background-color: #004D40;
+}
+#invoice-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #00796B;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 999;
+  text-align: center;
+}
+
+#invoice-notification.show {
+  display: block;
+}
+
+.invoice-notification-content h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.invoice-notification-content p {
+  margin: 5px 0;
+  font-size: 14px;
 }

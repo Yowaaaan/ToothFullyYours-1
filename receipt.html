@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Appointment Receipt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="receipt.css">
+    <script src="receipt.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const appointmentDetails = {
+          name: "John Doe",
+          date: "2023-10-01",
+          time: "10:00 AM",
+          service: "Consultation",
+          price: "$100"
+        };
+
+        const receiptDetails = document.getElementById("receiptDetails");
+        receiptDetails.innerHTML = `
+          <p><strong>Name:</strong> ${appointmentDetails.name}</p>
+          <p><strong>Date:</strong> ${appointmentDetails.date}</p>
+          <p><strong>Time:</strong> ${appointmentDetails.time}</p>
+          <p><strong>Service:</strong> ${appointmentDetails.service}</p>
+          <p><strong>Price:</strong> ${appointmentDetails.price}</p>
+        `;
+      });
+    </script>
+</head>
+<body>
+
+  <div class="receipt" id="receipt">
+    <h2>Appointment Receipt</h2>
+    <div class="details" id="receiptDetails">
+      <!-- Filled by JavaScript -->
+    </div>
+    <div class="footer">
+      Thank you for booking with us!
+    </div>
+    <button onclick="window.print()">Print Receipt</button>
+  </div>
+</body>
+</html>

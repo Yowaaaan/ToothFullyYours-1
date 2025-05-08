@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(to bottom, #E0F7FA, #FFFFFF);
+  background: linear-gradient(to bottom, #60B5FF, #FFFFFF);
   color: #333;
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #00796B;
+  color: #4CC9FE;
   margin-bottom: 20px;
   font-size: 24px;
 }
@@ -29,7 +29,7 @@ h1 {
   gap: 8px;
   margin: 15px 0 12px;
   font-size: 16px;
-  color: #00796B;
+  color: #00A9FF;
 }
 
 .appointment-form input,
@@ -38,7 +38,7 @@ h1 {
   width: 100%;
   padding: 5px;
   margin-bottom: 15px;
-  border: 1px solid #B2DFDB;
+  border: 1px solid #0118D8;
   border-radius: 7px;
   font-size: 15px;
   background-color: #F1F8E9;
@@ -46,12 +46,12 @@ h1 {
 
 .appointment-form input:focus,
 .appointment-form textarea:focus {
-  border-color: #00796B;
+  border-color: #1B56FD;
   outline: none;
 }
 
 .appointment-form button {
-  background-color: #00796B;
+  background-color: #3A59D1;
   color: white;
   font-weight: bold;
   border: none;
@@ -61,7 +61,7 @@ h1 {
 }
 
 .appointment-form button:hover {
-  background-color: #004D40;
+  background-color: #0118D8;
 }
 
 #invoice-overlay {
@@ -93,7 +93,7 @@ h1 {
 
 .invoice h2 {
   text-align: center;
-  color: #00796B;
+  color: #0d62b1;
   font-size: 18px;
 }
 
@@ -105,7 +105,7 @@ h1 {
 .invoice-overlay-btn {
   display: block;
   margin-top: 10px;
-  background-color: #00796B;
+  background-color: #3A59D1;
   color: white;
   padding: 10px;
   text-align: center;
@@ -115,14 +115,14 @@ h1 {
 }
 
 .invoice-overlay-btn:hover {
-  background-color: #004D40;
+  background-color: #3D90D7;
 }
 #invoice-notification {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #00796B;
+  background-color: #0118D8;
   color: white;
   padding: 15px 25px;
   border-radius: 8px;

@@ -11,7 +11,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image:url(bakgrawnd.jfif);
+            background: linear-gradient(to bottom, #60B5FF, #FFFFFF);
         }
         .login-container {
             background: #3d5a80;
@@ -61,12 +61,16 @@
             font-size: 14px;
         }
         .register-link a {
-            color: #023047  ;
+            color: white  ;
             text-decoration: none;
         }
         .register-link a:hover {
             text-decoration: underline;
         }
+        p {
+            color: #023047;
+        }
+
 
         @media (max-width: 480px) {
             .login-container {

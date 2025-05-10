@@ -41,17 +41,18 @@
           <p><strong>Message:</strong> ${data.message}</p>
         `;
 
-        // Generate a link with the appointment data (you can customize this URL to link to your appointment page)
-        const appointmentLink = `https://tooth-fully-yours--six.vercel.app/receipt.html${encodeURIComponent(JSON.stringify(data))}`;
+        // Generate a link with the appointment data
+        const appointmentLink = `https://yourwebsite.com/appointment-details?data=${encodeURIComponent(JSON.stringify(data))}`;
         
-        // Set the link for the QR code
+        // Set the link for the QR code (this will be clickable when scanned)
         document.getElementById("qrLink").setAttribute("href", appointmentLink);
 
         // Generate the QR code that links to the appointment URL
         const qrCodeCanvas = document.getElementById('qrCodeCanvas');
         QRCode.toCanvas(qrCodeCanvas, appointmentLink, {
-          width: 110, // 2 inches (200px)
-          height: 110, // 2 inches
+          width: 110, // QR code size (200px)
+          height: 110, // QR code height (200px)
+          margin: 1, // Margin around the QR code
         }, function (error) {
           if (error) {
             console.error(error);

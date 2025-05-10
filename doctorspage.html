@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Doctors | Toothfully Yours</title>
+  <link rel="stylesheet" href="doctors.css">
+<body>
+  <header>
+    <nav>
+      <div class="logo">Tooth Fully Yours</div>
+      <ul>
+        <li><a href="mainpage2.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="#doctors" class="active">Doctors</a></li>
+        <li><a href="appointment.html">Book</a></li>
+        <li><a href="aboutus.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+<section id="doctors" class="fade-in">
+  <h2>Meet Our Doctors</h2>
+  <div class="doctor-list">
+    <div class="doctor-card" data-name="Dr. Kenjin Seloterio" data-specialty="Orthodontist" data-description="Experienced in advanced cardiac procedures and patient care.">
+      <img src="kinjin.jfif" alt="Dr. Kenjin" />
+      <p>Dr. Kenjin Seloterio</p>
+    </div>
+    <div class="doctor-card" data-name="Dr. Kendhryx Barroga" data-specialty="Pediatrician" data-description="Specializes in children's health and wellness.">
+      <img src="ken.png" alt="Dr. Kendhryx" />
+      <p>Dr. Kendhryx Barroga</p>
+    </div>
+    <div class="doctor-card" data-name="Dr. John Michael Generalao" data-specialty="Dermatologist" data-description="Expert in skin care and treatment of skin conditions.">
+      <img src="Dr Jm.png" alt="Dr. John" />
+      <p>Dr. John Michael Generalao</p>
+    </div>
+    <div class="doctor-card" data-name="Dr. Rio Bautista" data-specialty="Neurologist" data-description="Focused on brain and nervous system health.">
+      <img src="reo.jfif" alt="Dr. Rio" />
+      <p>Dr. Rio Bautista</p>
+    </div>
+  </div>
+</section>
+<body>
+    <div id="doctorModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3 id="modalName"></h3>
+    <h4 id="modalSpecialty"></h4>
+    <p id="modalDescription"></p>
+  </div>
+</div>
+
+<script>
+  const doctorCards = document.querySelectorAll('.doctor-card');
+  const modal = document.getElementById('doctorModal');
+  const modalName = document.getElementById('modalName');
+  const modalSpecialty = document.getElementById('modalSpecialty');
+  const modalDescription = document.getElementById('modalDescription');
+  const closeBtn = document.querySelector('.close');
+
+  doctorCards.forEach(card => {
+    card.addEventListener('click', () => {
+      modalName.textContent = card.dataset.name;
+      modalSpecialty.textContent = card.dataset.specialty;
+      modalDescription.textContent = card.dataset.description;
+      modal.style.display = 'block';
+    });
+  });
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+</body>

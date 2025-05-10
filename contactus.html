@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toothfully Yours Clinic</title>
+    <link rel="stylesheet" href="contactus.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Tooth Fully Yours</div>
+            <ul>
+                <li><a href="mainpage2.html">Home</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="#contact" class="active">Contact</a></li>
+                <li><a href="doctorspage.html">Doctors</a></li>
+                <li><a href="aboutus.html">About</a></li>
+            </ul>
+        </nav>
+<section id="contact" class="fade-in">
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <p>Have a question or need to book an appointment? We're here to help.</p>
+      <ul>
+        <li><strong>Phone:</strong> 123123123123</li>
+        <li><strong>Email:</strong> toothfullyyours@gmail.com</li>
+        <li><strong>Address:</strong> kahit saan basta malayo sainyo</li>
+      </ul>
+    </div>
+
+    <div class="contact-form">
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+        <div id="formToast" class="toast">Message sent successfully!</div>
+      </form>
+      <script>
+        const form = document.querySelector(".contact-form form");
+        const toast = document.getElementById("formToast");
+
+         form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Show the toast in the center
+    toast.classList.add("show");
+
+    // Hide after 2.5 seconds
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2500);
+
+    // Reset the form
+    form.reset();
+  });
+</script>
+
+      </script>
+    </div>
+  </div>
+  </script>
+</section>

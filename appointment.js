@@ -24,20 +24,20 @@ const form = document.getElementById("appointment-form");
 // Static schedules (each doctor's availability for certain dates)
 const doctorSchedules = {
   "Dr. Kenjin Seloterio": {
-    availableDays: ["Saturday", "Sunday"],
-    timeSlots: ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM"] // Time slots for weekends
+    timeSlots: ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM"],
+    availableDays: ["Monday", "Wednesday", "Friday"] // Available days
   },
   "Dr. Kendhryx Barroga": {
-    availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    timeSlots: ["8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"] // Time slots for weekdays
+    timeSlots: ["8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"],
+    availableDays: ["Tuesday", "Thursday"]
   },
   "Dr. John Micheal Generalao": {
-    availableDays: ["Monday", "Wednesday", "Friday"],
-    timeSlots: ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM"] // Time slots for weekdays
+    timeSlots: ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM"],
+    availableDays: ["Monday", "Tuesday", "Thursday"]
   },
   "Dr. Rio Bautista": {
-    availableDays: ["Tuesday", "Thursday", "Friday"],
-    timeSlots: ["8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"] // Time slots for weekdays
+    timeSlots: ["8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"],
+    availableDays: ["Monday", "Wednesday", "Friday"]
   }
 };
 
@@ -123,6 +123,7 @@ doctorSelect.addEventListener("change", () => {
 dateInput.addEventListener("change", updateAvailableTimes);
 
 // Form submission logic    
+// Form submission logic    
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -132,27 +133,43 @@ form.addEventListener("submit", function (event) {
   const date = dateInput.value;
   const time = timeSelect.value;
   const message = document.getElementById("message").value;
+  const treatment = document.getElementById("treatment").value; // Get the selected treatment
 
   const appointmentsRef = ref(database, 'appointments');
   const newAppointmentRef = push(appointmentsRef);
 
   set(newAppointmentRef, {
-    doctor, name, email, date, time,
+    doctor, name, email, date, time, treatment,  // Include treatment here
     message: message || "No additional notes",
     timestamp: Date.now()
   }).then(() => {
-       // Save to localStorage
-    localStorage.setItem("appointmentDetails", JSON.stringify({
-    name, doctor, date, time, message: message || "No additional notes"
-  }));
-  
-  // Redirect immediately to receipt
-  window.location.href = "receipt.html";
-  
-    
-        form.reset();
-        timeSelect.innerHTML = `<option value="">-- Select Time --</option>`;
-  });
-});
-// Close button for the notification  
+    // Save to localStorage including treatment
+    localStorage.setItem("appointmentData", JSON.stringify({
+      name, doctor, date, time, treatment, message: message || "No additional notes"
+    }));
 
+    // Redirect immediately to receipt
+    window.location.href = "appointment-receipt.html";
+
+    form.reset();
+    timeSelect.innerHTML = `<option value="">-- Select Time --</option>`;
+    dateInput.value = "";
+    doctorSelect.value = "";
+    setDateRestrictions();
+    updateAvailableTimes();
+  }
+  ).catch((error) => {
+    console.error("Error saving appointment: ", error);
+    alert("There was an error saving your appointment. Please try again.");
+  });
+
+  new QRCode(document.getElementById("qrcode"), {
+  text: qrText,
+  width: 128, // Adjust the size here (smaller value for a smaller QR code)
+  height: 128, // Same size as width to maintain the aspect ratio
+});
+
+
+
+}
+);

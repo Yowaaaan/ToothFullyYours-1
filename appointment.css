@@ -1,149 +1,60 @@
 body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(to bottom, #60B5FF, #FFFFFF);
-  color: #333;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-}
-
-.container {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-  color: #4CC9FE;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-.appointment-form label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 15px 0 12px;
-  font-size: 16px;
-  color: #00A9FF;
-}
-
-.appointment-form input,
-.appointment-form textarea,
-.appointment-form button {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #0118D8;
-  border-radius: 7px;
-  font-size: 15px;
-  background-color: #F1F8E9;
-}
-
-.appointment-form input:focus,
-.appointment-form textarea:focus {
-  border-color: #1B56FD;
-  outline: none;
-}
-
-.appointment-form button {
-  background-color: #3A59D1;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
-.appointment-form button:hover {
-  background-color: #0118D8;
-}
-
-#invoice-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-#invoice-overlay.show {
-  display: flex;
-}
-
-.invoice {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 90%;
-  text-align: left;
-}
-
-.invoice h2 {
-  text-align: center;
-  color: #0d62b1;
-  font-size: 18px;
-}
-
-.invoice p {
-  margin: 8px 0;
-  font-size: 14px;
-}
-
-.invoice-overlay-btn {
-  display: block;
-  margin-top: 10px;
-  background-color: #3A59D1;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.invoice-overlay-btn:hover {
-  background-color: #3D90D7;
-}
-#invoice-notification {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #0118D8;
-  color: white;
-  padding: 15px 25px;
-  border-radius: 8px;
-  max-width: 90%;
-  width: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: none;
-  z-index: 999;
-  text-align: center;
-}
-
-#invoice-notification.show {
-  display: block;
-}
-
-.invoice-notification-content h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.invoice-notification-content p {
-  margin: 5px 0;
-  font-size: 14px;
-}
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #023e8a;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px;
+      width: 100%;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #023e8a;
+    }
+    .invoice-notification-content {
+      background: #e0f7fa;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      display: none;
+    }
+    .invoice-notification-content.show {
+      display: block;
+    }
+  

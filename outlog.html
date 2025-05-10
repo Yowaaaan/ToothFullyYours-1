@@ -1,139 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tooth Fully Yours</title>
-  <link rel="stylesheet" href="Untitled-1.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toothfully Yours Clinic</title>
+    <link rel="stylesheet" href="main.css" />
 </head>
+
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <img src="ito na talaga.jpg" alt="Tooth Fully Yours Logo">
-        <h1>Tooth Fully Yours</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><button id="logout" class="logout-btn">Logout</button></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <nav>
+            <div class="logo">Toothfully Yours</div>
+            <ul>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="doctorspage.html">Doctors</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="untitled-1.html" class="nav-btn">Login</a></li>
+                <li><a href="Sign Up.html" class="nav-btn">Register</a></li>
+            </ul>
+        </nav>
 
-  <section id="home" class="hero">
-    <div class="container">
-      <h2>Welcome to Tooth Fully Yours Clinic</h2>
-      <p>Your smile is our passion. We provide exceptional dental care in a warm and welcoming environment.</p>
-      <a href="appointment.html" class="cta-button">Book an Appointment</a>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>At Tooth Fully Yours Clinic, we are committed to delivering high-quality dental care with a personal touch. Our team of experienced professionals is dedicated to helping you achieve a healthy and beautiful smile.</p>
-    </div>
-  </section>
-
-  <section id="services" class="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="service-list">
-        <div class="service-item">
-          <i class="fas fa-tooth"></i>
-          <h3>General Dentistry</h3>
-          <p>Routine checkups, cleanings, and fillings to keep your smile healthy.</p>
+        <section class="hero">
+            <video autoplay muted loop id="bgVideo">
+                <source src="background.mp4" type="video/mp4" />
+              </video>
+            <div class="overlay"></div>
+              
+            <h1>Smile Brighter With Us</h1>
+            <p>Trusted dental care for your whole family</p>
+            <a href="appointment.html" class="btn">Book Appointment</a>
+        </section>
+    </header>
         </div>
-        <div class="service-item">
-          <i class="fas fa-teeth"></i>
-          <h3>Orthodontics</h3>
-          <p>Braces and aligners for a perfectly aligned smile.</p>
-        </div>
-        <div class="service-item">
-          <i class="fas fa-smile"></i>
-          <h3>Cosmetic Dentistry</h3>
-          <p>Teeth whitening, veneers, and more to enhance your smile.</p>
-        </div>
-      </div>
+    </section>
+    </section>
+
+     <section class="testimonials-section">
+  <h2>What Our Patients Say</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <p>"Toothfully Yours made me feel so comfortable. The staff are incredibly kind and professional!"</p>
+      <h4>- Angela R.</h4>
     </div>
-  </section>
-
-  <section id="team" class="team">
-    <div class="container">
-      <h2>Meet Our Team</h2>
-      <div class="team-members">
-        <div class="member">
-          <img src="ken.png" alt="Dr.Barroga">
-          <h3>Dr. Kendhryx R. Barroga</h3>
-          <p>Orthodontist</p>
-        </div>
-        <div class="member">
-          <img src="kinjin.jfif" alt="Dr. Kenjin">
-          <h3>Dr. Kenjin Seloterio</h3>
-          <p>General Dentist</p>
-        </div>
-      </div>
+    <div class="testimonial">
+      <p>"Super clean clinic with the latest technology. Highly recommend Dr. Kenjin and team!"</p>
+      <h4>- Marco T.</h4>
     </div>
-  </section>
-  <footer>
-    <div id="contact" class="container">
-      <p>&copy; 2023 Tooth Fully Yours Clinic. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="https://formsubmit.co/el/" target="_blank">Email us</a>
-
-
-      </div>
+    <div class="testimonial">
+      <p>"The best dental experience I've had. Painless, fast, and the results were amazing."</p>
+      <h4>- Joanna M.</h4>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-  
-    // Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCN7IMQBXb1gPY7NifAjxYp4bSUr_f2P04",
-      authDomain: "toothfullyyours-b7f41.firebaseapp.com",
-      projectId: "toothfullyyours-b7f41",
-      storageBucket: "toothfullyyours-b7f41.appspot.com",
-      messagingSenderId: "470168333871",
-      appId: "1:470168333871:web:87c427f4b05c3dde40a0da"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-  
-    // Show/hide logout button based on auth state
-    const logoutButton = document.getElementById('logout');
-  
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        logoutButton.style.display = 'inline-block';
-      } else {
-        logoutButton.style.display = 'none';
-      }
-    });
-  
-    // Logout logic
-    logoutButton.addEventListener("click", () => {
-      signOut(auth).then(() => {
-        alert("Logged out successfully!");
-        window.location.href = "index.html"; // Redirect to login page
-      }).catch((error) => {
-        alert("Error: " + error.message);
-      });
-    });
-  </script>
+
+
+        <section class="highlights-section fade-in">
+  <h2>Why Choose Toothfully Yours?</h2>
+  <div class="highlight-cards">
+    <div class="highlight-card">
+      <img src="reo.jfif" alt="Experienced Dentists" />
+      <h3>Experienced Dentists</h3>
+      <p>Our skilled team delivers high-quality, personalized care with years of trusted expertise.</p>
+    </div>
+    <div class="highlight-card">
+      <img src="ss1.jpg" alt="Modern Equipment" />
+      <h3>Modern Equipment</h3>
+      <p>We use state-of-the-art technology for accurate diagnosis and comfortable treatment.</p>
+    </div>
+    <div class="highlight-card">
+      <img src="czc.jpg" alt="Gentle Care" />
+      <h3>Gentle & Caring</h3>
+      <p>We treat every patient like family, ensuring a stress-free and relaxing experience.</p>
+    </div>
+  </div>
+</section>
+
 </body>
+
 </html>

@@ -36,7 +36,7 @@ submit.addEventListener("click", function(event) {
       }).then((result) => {
         // Redirect only after user clicks "Continue" or after timer ends
         if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-          window.location.href = "outlog.html"; // Redirect to the desired page
+          window.location.href = "mainpage2.html"; // Redirect to the desired page
         }
       });
 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Dental Services | Toothfully Yours</title>
+  <link rel="stylesheet" href="service.css" />
+<body>
+  <header>
+    <nav>
+      <div class="logo">Tooth Fully Yours</div>
+      <ul>
+        <li><a href="mainpage2.html">Home</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="doctorspage.html">Doctors</a></li>
+        <li><a href="appointment.html">Book</a></li>
+        <li><a href="aboutus.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="services-section">
+    <h1>Our Dental Services</h1>
+    <p class="subheading">Gentle, effective care to keep your smile healthy and bright.</p>
+    
+    <div class="services-grid">
+      <div class="service-card" onclick="openModal(this)" data-image="teethcleaning.jfif" data-title="Teeth Cleaning">
+        🦷 Teeth Cleaning
+      </div>
+      <div class="service-card" onclick="openModal(this)" data-image="bracers and aligners.jpg" data-title="Braces & Aligners">
+        😬 Braces & Aligners
+      </div>
+      <div class="service-card" onclick="openModal(this)" data-image="fluoride.jpg" data-title="Fluoride Treatments">🦷
+        Fluoride Treatments</div>
+      <div class="service-card" onclick="openModal(this)" data-image="s.png"
+        data-title="Fillings & Restorations">🪥 Fillings & Restorations</div>
+      <div class="service-card" onclick="openModal(this)" data-image="a.jpg" data-title="Root Canal Therapy">
+        🦷 Root Canal Therapy</div>
+      <div class="service-card" onclick="openModal(this)" data-image="2.jpg" data-title="Wisdom Tooth Extraction">
+        🦷 Wisdom Tooth Extraction</div>
+      <div class="service-card" onclick="openModal(this)" data-image="3.webp" data-title="Teeth Whitening">😁
+        Teeth Whitening</div>
+      <div class="service-card" onclick="openModal(this)" data-image="4.jpg" data-title="Pediatric Dentistry">
+        👶 Pediatric Dentistry</div>
+      <div class="service-card" onclick="openModal(this)" data-image="5.webp" data-title="Cosmetic Dentistry">💎
+        Cosmetic Dentistry</div>
+      <div class="service-card" onclick="openModal(this)" data-image="6.jpg" data-title="Emergency Dental Care">
+        🚨 Emergency Dental Care</div>
+      <div class="service-card" onclick="openModal(this)" data-image="7.jpg" data-title="Oral Surgery">
+        🩺Oral Surgery</div>
+      <div class="service-card" onclick="openModal(this)" data-image="8.jpg" data-title="Periodontal Care">
+        🦷Periodontal Care</div>
+      <div class="service-card" onclick="openModal(this)" data-image="12.jpg" data-title="Dental Implants">🦷
+        Dental Implants</div>
+      <div class="service-card" onclick="openModal(this)" data-image="sad1.jpg" data-title="Dentures & Partials">🦷
+        Dentures & Partials</div>
+      <div class="service-card" onclick="openModal(this)" data-image="s1.jfif" data-title="Oral Cancer Screening">🦷
+        Oral Cancer Screening</div>
+      <div class="service-card" onclick="openModal(this)" data-image="31.jpg" data-title="Sedation Dentistry">🦷
+        Sedation Dentistry</div>
+      <div class="service-card" onclick="openModal(this)" data-image="11.jpg" data-title="Geriatric Dentistry">
+        🦷 Geriatric Dentistry</div>
+      <div class="service-card" onclick="openModal(this)" data-image="312.webp" data-title="Preventive Care">🦷
+        Preventive Care</div>
+      <div class="service-card" onclick="openModal(this)" data-image="last.jpg" data-title="Digital X-Rays">🦷 Digital
+        X-Rays</div>
+      <div class="service-card" onclick="openModal(this)" data-image="1.jpg" data-title="Bridges & Crowns">🦷
+        Bridges & Crowns</div>
+    </div>
+  </section>
+  <div id="serviceModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <img id="modalImage" src="" alt="Treatment Image" />
+  </div>
+</div>
+
+  <script>
+  function openModal(element) {
+    const title = element.getAttribute("data-title");
+    const image = element.getAttribute("data-image");
+
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalImage").src = image;
+    document.getElementById("serviceModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("serviceModal").style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    const modal = document.getElementById("serviceModal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+</script>
+
+  <footer>
+    <p>&copy; 2025 Toothfully Yours Dental Clinic | Designed with care</p>
+  </footer>
+</body>
+</html>

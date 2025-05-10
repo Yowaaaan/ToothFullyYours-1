@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Appointment Confirmation</title>
-  <link rel="stylesheet" href="appointment.css"/>
+  <link rel="stylesheet" href="appointmentreceipt.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body>
@@ -17,10 +17,18 @@
       <p><strong>Date:</strong> <span id="receipt-date"></span></p>
       <p><strong>Time:</strong> <span id="receipt-time"></span></p>
       <p><strong>Message:</strong> <span id="receipt-message"></span></p>
+      <p><strong>Treatment:</strong> <span id="receipt-treatment"></span></p>
+    </div>
+    <!-- QR Code Display -->
+    <div id="qr-code-container">
+      <h3>Scan for Confirmation</h3>
+      <div id="qrcode"></div>
     </div>
     <button id="print-receipt">Print Receipt</button>
+    <button id="back-to-home" onclick="window.location.href='mainpage.html'">Back to Home</button>
   </div>
 
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
   <script>
     // Assuming the data is passed via localStorage from the form submission page
     window.onload = function() {
@@ -33,6 +41,17 @@
         document.getElementById('receipt-date').textContent = appointmentData.date;
         document.getElementById('receipt-time').textContent = appointmentData.time;
         document.getElementById('receipt-message').textContent = appointmentData.message || "No additional notes.";
+        document.getElementById('receipt-treatment').textContent = appointmentData.treatment || "No treatment selected.";
+
+        // Generate QR Code with appointment link or details
+        const qrText = `Appointment Confirmation:\nName: ${appointmentData.name}\nDoctor: ${appointmentData.doctor}\nDate: ${appointmentData.date}\nTime: ${appointmentData.time}\nMessage: ${appointmentData.message || 'No additional notes.'}\nTreatment: ${appointmentData.treatment || 'No treatment selected.'}`;
+        
+        // Set smaller QR code size
+        new QRCode(document.getElementById("qrcode"), {
+          text: qrText,
+          width: 128, // Adjust size
+          height: 128  // Same size as width to maintain aspect ratio
+        });
       } else {
         alert("No appointment data found.");
       }

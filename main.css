@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.7;
+  color: #ffffff;
+  background: #f9f9f9;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0077b6;
+  padding: 1rem 2rem;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero a {
+  display: inline-block;
+  margin-top: 20px;
+  background: #ffffff;
+  color: #02669d;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.hero a:hover {
+  background: #02669d;
+}
+.btn {
+  background: #fff;
+  color: #0288d1;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #0288d1;
+  color: white;
+}
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 1.2s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.slide-up {
+  animation: slideUp 1s ease-in forwards;
+  opacity: 0;
+}
+.nav-btn {
+    background: white;
+    color: #0288d1;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .nav-btn:hover {
+    background: #fff8f8;
+  }
+  nav ul li a:hover,
+  nav ul li a.active {
+  text-decoration: underline;
+}
+  /* Make video fill the background */
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+
+  }
+  /* Optional overlay for readability */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(61, 61, 61, 0.4); /* semi-transparent black */
+    z-index: -1;
+  }
+  /* Tablet (<= 768px) */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero a {
+    padding: 12px 25px;
+  }
+
+  section {
+    padding: 40px 15px;
+  }
+}
+
+/* Mobile (<= 480px) */
+@media (max-width: 444px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    padding: 0.8rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero a,
+  .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  nav ul {
+    padding: 0.5rem 0;
+  }
+
+  section {
+    padding: 30px 10px;
+  }
+}
+/* Horizontal by default (already handled with flex) */
+
+/* Stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .services-list,
+  .doctor-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .services-list > *,
+  .doctor-list > * {
+    max-width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+}
+.highlights-section {
+  background: #eaf4fb;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.highlights-section h2 {
+  font-size: 2.2rem;
+  color: #023e8a;
+  margin-bottom: 40px;
+}
+
+.highlight-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.highlight-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+}
+
+.highlight-card img {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.highlight-card h3 {
+  color: #0077b6;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.highlight-card p {
+  font-size: 0.95rem;
+  color: #555;
+}

@@ -6,6 +6,10 @@
     <title>Sign Up</title>
     <link rel="stylesheet" href="sign up css.css">
     <script type="module" src="Sign Up.js" defer></script>
+    <!-- Include SweetAlert2 via CDN in your HTML head -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
 </head>
 <body>
@@ -14,8 +18,14 @@
         <form>
             <input type="email" placeholder="Email" id="email" required><br>
             <input type="password" placeholder="Password" id="password" required><br>
+          
+            <div class="form-group">
+              <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+              <div id="errorMessage" class="error">Passwords do not match</div>
+            </div>
+          
             <button id="submit" type="submit">Sign Up</button>
-        </form>
+          </form>          
         <p class="login-link">
             Already have an account? 
             <a href="Untitled-1.html">Log in</a>

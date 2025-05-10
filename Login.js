@@ -25,8 +25,21 @@ submit.addEventListener("click", function(event) {
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      alert("Successfully signed in!");
-      window.location.href = "outlog.html";
+      Swal.fire({
+        title: 'Account logged in',
+        text: 'Welcome to Toothfully Yours.',
+        icon: 'success',
+        confirmButtonText: 'Continue',
+        timer: 4000, // optional: auto-close in 4 seconds
+        timerProgressBar: true,
+        showConfirmButton: true
+      }).then((result) => {
+        // Redirect only after user clicks "Continue" or after timer ends
+        if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+          window.location.href = "outlog.html"; // Redirect to the desired page
+        }
+      });
+
     })
     .catch((error) => {
       alert("Error: " + error.message);

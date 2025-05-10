@@ -12,16 +12,25 @@
     <div class="invoice-notification-content">
       <h3>Appointment Confirmed</h3>
       <p><strong>Name:</strong> <span id="invoice-notification-name"></span></p>
+      <p><strong>Doctor:</strong> <span id="invoice-notification-doctor"></span></p>
       <p><strong>Date:</strong> <span id="invoice-notification-date"></span></p>
       <p><strong>Time:</strong> <span id="invoice-notification-time"></span></p>
       <p><strong>Message:</strong> <span id="invoice-notification-message"></span></p>
     </div>
   </div>
-  
 
   <div class="container">
     <h1>Appointment Form</h1>
     <form id="appointment-form" class="appointment-form">
+      <label for="doctor"><i class="fa fa-user"></i> Choose a Doctor:</label>
+      <select id="doctor" name="doctor" required>
+        <option value="">-- Select a Doctor --</option>
+        <option value="Dr. Kenjin Seloterio">Dr. Kenjin Seloterio – Dentist</option>
+        <option value="Dr. Kendhryx Barroga">Dr. Kendhryx Barroga – Orthodontist</option>
+        <option value="Dr. John Micheal Generalao">Dr. John Micheal Generalao – Pediatric Dentist</option>
+        <option value="Dr. Rio Bautista">Dr. Rio Bautista – Oral Surgeon</option>
+      </select>
+
       <label for="name"><i class="fa fa-user-md"></i> Full Name:</label>
       <input type="text" id="name" name="name" placeholder="Enter Name" required />
 
@@ -29,11 +38,14 @@
       <input type="email" id="email" name="email" placeholder="Enter Email" required />
 
       <label for="date"><i class="fa fa-calendar"></i> Preferred Date:</label>
-      <input type="date" id="date" name="date"required />
+      <input type="date" id="date" name="date" required />
 
       <label for="time"><i class="fa fa-clock"></i> Preferred Time:</label>
-      <input type="time" id="time" name="time" required />
+      <select id="time" name="time" required>
+        <option value="">-- Select Time --</option>
 
+      </select>
+      
       <label for="message"><i class="fa fa-comment"></i> Additional Notes:</label>
       <textarea id="message" name="message" rows="3"></textarea>
 
@@ -43,25 +55,81 @@
 
   <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js" type="module"></script>
   <script src="appointment.js" type="module"></script>
+  
+  <script>
+    // List of doctors with general time slots available every day
+    const doctorsAvailability = {
+      "Dr. Kenjin Seloterio": {
+        times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"]
+      },
+      "Dr. Kendhryx Barroga": {
+        times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"]
+      },
+      "Dr. John Micheal Generalao": {
+        times: ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM"]
+      },
+      "Dr. Rio Bautista": {
+        times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM"]
+      }
+    };
+  
+    // Function to update available dates when a doctor is selected
+    document.getElementById('doctor').addEventListener('change', function() {
+      const doctor = this.value;
+      const dateSelect = document.getElementById('date');
+      const timeSelect = document.getElementById('time');
+      
+      // Clear previous options
+      dateSelect.removeAttribute("disabled"); // Enable the date picker for any date
+      timeSelect.innerHTML = '<option value="">-- Select Time --</option>';
+  
+      // Populate the available dates (No restriction on dates, so it's any future date)
+      const today = new Date();
+      const minDate = today.toISOString().split("T")[0];  // Get today's date in YYYY-MM-DD format
+      dateSelect.setAttribute("min", minDate);  // Set the minimum selectable date to today
+      
+      // If doctor is selected, populate available times
+      if (doctor && doctorsAvailability[doctor]) {
+        const availableTimes = doctorsAvailability[doctor].times;
+        availableTimes.forEach(time => {
+          const option = document.createElement('option');
+          option.value = time;
+          option.textContent = time;
+          timeSelect.appendChild(option);
+        });
+      }
+    });
+  
+    // Function to update available times when a date is selected
+    document.getElementById('date').addEventListener('change', function() {
+      const doctor = document.getElementById('doctor').value;
+      const date = this.value;
+      const timeSelect = document.getElementById('time');
+  
+      // Clear previous time options
+      timeSelect.innerHTML = '<option value="">-- Select Time --</option>';
+  
+      if (doctor && date && doctorsAvailability[doctor]) {
+        const availableTimes = doctorsAvailability[doctor].times;
+        availableTimes.forEach(time => {
+          const option = document.createElement('option');
+          option.value = time;
+          option.textContent = time;
+          timeSelect.appendChild(option);
+        });
+      }
+    });
+      if (doctor && name && email && date && time) {
+        // Display appointment confirmation
+        document.getElementById('invoice-notification').classList.remove('hide');
+        document.getElementById('invoice-notification-name').textContent = name;
+        document.getElementById('invoice-notification-doctor').textContent = doctor;
+        document.getElementById('invoice-notification-date').textContent = date;
+        document.getElementById('invoice-notification-time').textContent = time;
+        document.getElementById('invoice-notification-message').textContent = message;
+        
+      }
+
+  </script>  
 </body>
 </html>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-  import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCN7IMQBXb1gPY7NifAjxYp4bSUr_f2P04",
-    authDomain: "toothfullyyours-b7f41.firebaseapp.com",
-    projectId: "toothfullyyours-b7f41",
-    storageBucket: "toothfullyyours-b7f41.appspot.com",
-    messagingSenderId: "470168333871",
-    appId: "1:470168333871:web:87c427f4b05c3dde40a0da"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  // Your JavaScript code here

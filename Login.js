@@ -25,23 +25,35 @@ submit.addEventListener("click", function(event) {
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      Swal.fire({
-        title: 'Account logged in',
-        text: 'Welcome to Toothfully Yours.',
-        icon: 'success',
-        confirmButtonText: 'Continue',
-        timer: 4000, // optional: auto-close in 4 seconds
-        timerProgressBar: true,
-        showConfirmButton: true
-      }).then((result) => {
-        // Redirect only after user clicks "Continue" or after timer ends
-        if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-          window.location.href = "mainpage2.html"; // Redirect to the desired page
-        }
-      });
+     Swal.fire({
+  title: 'Account logged in',
+  text: 'Welcome to Toothfully Yours.',
+  icon: 'success',
+  confirmButtonText: 'Continue',
+  timer: 4000,
+  timerProgressBar: true,
+  showConfirmButton: true
+}).then((result) => {
+  if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+    // ✅ Remove appointment data
+    localStorage.removeItem("appointmentDetails");
 
-    })
-    .catch((error) => {
-      alert("Error: " + error.message);
-    });
+    // Redirect to main page
+    window.location.href = "mainpage2.html";
+  }
 });
+    }
+    ).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      // Show error message
+      Swal.fire({
+        title: 'Error',
+        text: errorMessage,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+    });
+} );
+// Show password toggle

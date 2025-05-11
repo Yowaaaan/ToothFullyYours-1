@@ -6,55 +6,8 @@
   <title>Book Appointment</title>
   <link rel="stylesheet" href="appointment.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-
-  <script>
-  // Check login status before allowing access
-  if (localStorage.getItem("isLoggedIn") !== "true") {
-    alert("Please login first to book an appointment.");
-    window.location.href = "index.html"; // Redirect to homepage
-  }
-</script>
-
 </head>
 <body>
-
-  <script>
-  const bookBtn = document.querySelector('.btn');
-
-  // Only intercept click if not logged in
-  bookBtn.addEventListener('click', function (e) {
-    if (localStorage.getItem("isLoggedIn") === "true") {
-      // Go directly to appointment page
-      window.location.href = "appointment.html";
-    } else {
-      // Prevent link and show login modal
-      e.preventDefault();
-      document.getElementById("loginModal").style.display = "flex";
-    }
-  });
-
-  function login() {
-    const user = document.getElementById("loginUser").value;
-    const pass = document.getElementById("loginPass").value;
-    const error = document.getElementById("loginError");
-
-    // Dummy credentials
-    if (user === "user" && pass === "1234") {
-      localStorage.setItem("isLoggedIn", "true");
-      window.location.href = "appointment.html";
-    } else {
-      error.textContent = "Invalid credentials. Try 'user' / '1234'";
-    }
-  }
-
-  function logout() {
-    localStorage.removeItem("isLoggedIn");
-    alert("You have been logged out.");
-    window.location.href = "index.html";
-  }
-</script>
-
-
  <!-- Notification / Receipt Popup -->
   <div id="invoice-notification" class="hide">
     <div class="invoice-notification-content">

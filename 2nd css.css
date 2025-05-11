@@ -13,15 +13,7 @@
             height: 100vh;
             background: linear-gradient(to bottom, #60B5FF, #FFFFFF);
         }
-        .login-container {
-            background: #3d5a80;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.884);
-            text-align: center;
-            width: 350px;
          
-            }
         h2 {
             margin-bottom: 20px;
         }

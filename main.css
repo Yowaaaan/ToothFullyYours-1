@@ -20,7 +20,7 @@ nav {
   background: #0077b6;
   padding: 1rem 2rem;
   color: white;
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 1000;
 }
@@ -36,7 +36,7 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 nav ul li a {
@@ -108,7 +108,7 @@ section {
     background: white;
     color: #0288d1;
     border: none;
-    padding: 8px 15px;
+    padding: 6px 12px;
     border-radius: 20px;
     cursor: pointer;
     font-weight: 600;
@@ -152,7 +152,7 @@ section {
 
   nav ul {
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     padding: 1rem 0;
   }
 
@@ -174,15 +174,22 @@ section {
 }
 
 /* Mobile (<= 480px) */
-@media (max-width: 444px) {
+@media (max-width: 478px) {
   .logo {
     font-size: 1.2rem;
   }
 
   nav {
+    flex-direction: row;
+    align-items:flex-start;
     padding: 0.8rem 1rem;
   }
-
+  nav ul{  
+    flex-direction: row;
+    align-items:normal;
+    width: 100%;
+    padding: 1rem 0;
+  }
   .hero h1 {
     font-size: 1.6rem;
   }
@@ -199,33 +206,7 @@ section {
   }
 
   section {
-    padding: 30px 10px;
-  }
-}
-/* Horizontal by default (already handled with flex) */
-
-/* Stack vertically on smaller screens */
-@media (max-width: 768px) {
-  .services-list,
-  .doctor-list {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .services-list > *,
-  .doctor-list > * {
-    max-width: 90%;
-  }
-}
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  nav ul li {
-    margin: 10px 0;
+    padding: 20px 10px;
   }
 }
 .highlights-section {

@@ -168,3 +168,34 @@ nav ul li a.active {
 .toast.show {
   opacity: 1;
 }
+@media (max-width: 478px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    flex-direction:column;
+    align-items:flex-start;
+    padding: 0.8rem 1rem;
+  }
+  nav ul{  
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero a,
+  .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  nav ul {
+    padding: 0.5rem 0;
+  }
+}

@@ -119,16 +119,20 @@
   <script>
   const doctorsAvailability = {
     "Dr. Kenjin Seloterio": {
-      times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"]
+      times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"],
+      availableDays: ["Monday", "Wednesday", "Friday",]  
     },
     "Dr. Kendhryx Barroga": {
-      times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"]
+      times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"],
+      availableDays: ["Tuesday", "Thursday",]
     },
     "Dr. John Micheal Generalao": {
-      times: ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM"]
+      times: ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM"],
+      availableDays: ["Monday", "Thursday", "Saturday"]
     },
     "Dr. Rio Bautista": {
-      times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM"]
+      times: ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM"],
+      availableDays: ["Tuesday", "Friday", "Sunday"]
     }
   };
 
@@ -136,21 +140,13 @@
   const dateInput = document.getElementById('date');
   const timeSelect = document.getElementById('time');
 
-  // Set min date to today (YYYY-MM-DD format)
-    window.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener('DOMContentLoaded', () => {
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
     const minDate = `${yyyy}-${mm}-${dd}`;
 
-    // Get the date input element
-    const dateInput = document.getElementById('date');
-
-    // Remove the min attribute, allowing users to choose any date
-    dateInput.removeAttribute('min');
-
-    // Set the default value to today (optional)
     dateInput.value = minDate;
 
     // Function to update available times based on selected doctor and date
@@ -158,28 +154,38 @@
       const selectedDoctor = doctorSelect.value;
       const selectedDate = dateInput.value;
 
+      // Get the day of the week from the selected date
+      const selectedDay = new Date(selectedDate).toLocaleString('en-us', { weekday: 'long' });
+
       // Clear previous time options
       timeSelect.innerHTML = '<option value="">-- Select Time --</option>';
 
       // Populate time slots if both doctor and date are selected
       if (selectedDoctor && selectedDate && doctorsAvailability[selectedDoctor]) {
-        doctorsAvailability[selectedDoctor].times.forEach(time => {
+        const doctorSchedule = doctorsAvailability[selectedDoctor];
+
+        // Check if the selected day is within the doctor's available days
+        if (doctorSchedule.availableDays.includes(selectedDay)) {
+          doctorSchedule.times.forEach(time => {
+            const option = document.createElement('option');
+            option.value = time;
+            option.textContent = time;
+            timeSelect.appendChild(option);
+          });
+        } else {
+          // If the doctor is not available on the selected day, show a message
           const option = document.createElement('option');
-          option.value = time;
-          option.textContent = time;
+          option.value = "";
+          option.textContent = `No available times on ${selectedDay}`;
           timeSelect.appendChild(option);
-        });
+        }
       }
     }
-
-    const doctorSelect = document.getElementById('doctor');
-    const timeSelect = document.getElementById('time');
 
     // Bind event listeners to update available times
     doctorSelect.addEventListener('change', updateAvailableTimes);
     dateInput.addEventListener('change', updateAvailableTimes);
-});
-
+  });
 </script>
 
 

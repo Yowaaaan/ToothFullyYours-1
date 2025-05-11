@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.7;
-  color: #333;
+  color: #ffffff;
   background: #f9f9f9;
 }
 
@@ -19,6 +21,7 @@ nav {
   padding: 1rem 2rem;
   color: white;
   position: sticky;
+  top: 0;
   z-index: 1000;
 }
 
@@ -86,12 +89,6 @@ nav ul li a.active {
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 15px;
-}
-
-.doctor-card p {
-  font-weight: 600;
-  color: #0077b6;
-  font-size: 1rem;
 }
 
 /* Hover effect */

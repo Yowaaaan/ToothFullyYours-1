@@ -110,3 +110,25 @@ nav ul li a.active {
     font-size: 0.95rem;
   }
 }
+
+@media (max-width: 444px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-text h2 {
+    font-size: 1.5rem;
+  }
+  .about-text p {
+    font-size: 0.85rem;
+  }
+  .about-image img {
+    width: 90%;
+  }
+  .about-text {
+    margin: 0 auto;
+  }
+    .about-image {
+      margin: 0 auto;
+    }
+  }

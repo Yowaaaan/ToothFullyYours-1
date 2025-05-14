@@ -15,6 +15,8 @@
       <p><strong>Name:</strong> <span id="receipt-name"></span></p>
       <p><strong>Doctor:</strong> <span id="receipt-doctor"></span></p>
       <p><strong>Date:</strong> <span id="receipt-date"></span></p>
+      <p><strong>Email:</strong> <span id="receipt-Email"></span></p>
+      <p><strong>Contact Number:</strong> <span id="receipt-contact"></span></p>
       <p><strong>Time:</strong> <span id="receipt-time"></span></p>
       <p><strong>Message:</strong> <span id="receipt-message"></span></p>
       <p><strong>Treatment:</strong> <span id="receipt-treatment"></span></p>
@@ -39,12 +41,24 @@
         document.getElementById('receipt-name').textContent = appointmentData.name;
         document.getElementById('receipt-doctor').textContent = appointmentData.doctor;
         document.getElementById('receipt-date').textContent = appointmentData.date;
+        document.getElementById('receipt-Email').textContent = appointmentData.email;
+        // Format the contact number to include dashes
+        document.getElementById('receipt-contact').textContent = appointmentData.contactNumber;
         document.getElementById('receipt-time').textContent = appointmentData.time;
         document.getElementById('receipt-message').textContent = appointmentData.message || "No additional notes.";
         document.getElementById('receipt-treatment').textContent = appointmentData.treatment || "No treatment selected.";
 
         // Generate QR Code with appointment link or details
-        const qrText = `Appointment Confirmation:\nName: ${appointmentData.name}\nDoctor: ${appointmentData.doctor}\nDate: ${appointmentData.date}\nTime: ${appointmentData.time}\nMessage: ${appointmentData.message || 'No additional notes.'}\nTreatment: ${appointmentData.treatment || 'No treatment selected.'}`;
+        const qrText = `Appointment Confirmation:
+          Name: ${appointmentData.name}
+          Doctor: ${appointmentData.doctor}
+          Date: ${appointmentData.date}
+          Time: ${appointmentData.email}
+          Message ${appointmentData.contactNumber}
+          Message ${appointmentData.time}
+          Message: ${appointmentData.message || 'No additional notes.'}
+          Treatment: ${appointmentData.treatment || 'No treatment selected.'}`;
+
         
         // Set smaller QR code size
         new QRCode(document.getElementById("qrcode"), {

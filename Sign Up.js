@@ -20,7 +20,10 @@ const form = document.querySelector("form");
 const submit = document.getElementById("submit");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
-const confirmPasswordInput = document.getElementById("confirmPassword"); // Corrected ID
+const firstNameInput = document.getElementById("firstName");
+const lastNameInput = document.getElementById("lastName");
+const contactNumberInput = document.getElementById("contactNumber");
+const confirmPasswordInput = document.getElementById("confirmPassword");
 const errorMessage = document.getElementById("errorMessage");
 
 // Submit listener
@@ -29,6 +32,7 @@ submit.addEventListener("click", function (event) {
 
   const email = emailInput.value;
   const password = passwordInput.value;
+  const contactNumber = contactNumberInput.value;
   const confirmPassword = confirmPasswordInput.value;
 
   // Check if passwords match
@@ -42,23 +46,56 @@ submit.addEventListener("click", function (event) {
   // Firebase account creation
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      Swal.fire({
-        title: 'Account Created!',
-        text: 'Welcome to Toothfully Yours.',
-        icon: 'success',
-        confirmButtonText: 'Continue',
-        timer: 4000, // optional: auto-close in 4 seconds
-        timerProgressBar: true,
-        showConfirmButton: true
-      }).then((result) => {
-        // Redirect only after user clicks "Continue" or after timer ends
-        if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-          window.location.href = "Untitled-1.html";
-        }
-      });
-      
+      // After successful account creation, get user details and save them
+      const userInfo = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        contactNumber: document.getElementById("contactNumber").value,
+        email: email // Store email as well
+      };
+
+      // Check if all fields are filled
+      if (userInfo.firstName && userInfo.lastName && userInfo.contactNumber && userInfo.email) {
+        // Save data to localStorage
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+        // Show success message
+        Swal.fire({
+          title: 'Account Created!',
+          text: 'Welcome to Toothfully Yours.',
+          icon: 'success',
+          confirmButtonText: 'Continue',
+          timer: 4000, // optional: auto-close in 4 seconds
+          timerProgressBar: true,
+          showConfirmButton: true
+        }).then((result) => {
+          // Redirect only after user clicks "Continue" or after timer ends
+          if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+            window.location.href = "Untitled-1.html"; // Redirect to appointment form
+          }
+        });
+      } else {
+        alert("Please fill out all required fields.");
+      }
     })
     .catch((error) => {
       alert("Error: " + error.message);
     });
 });
+// Password visibility toggle
+const togglePassword = document.getElementById("togglePassword");
+const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
+togglePassword.addEventListener("click", function () {
+  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+  passwordInput.setAttribute("type", type);
+  this.classList.toggle("fa-eye-slash");
+});
+toggleConfirmPassword.addEventListener("click", function () {
+  const type = confirmPasswordInput.getAttribute("type") === "password" ? "text" : "password";
+  confirmPasswordInput.setAttribute("type", type);
+  this.classList.toggle("fa-eye-slash");
+});
+// Password strength validation
+const passwordStrength = document.getElementById("passwordStrength");
+const passwordStrengthText = document.getElementById("passwordStrengthText");
+

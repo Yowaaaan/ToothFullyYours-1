@@ -98,4 +98,30 @@
     display: none;
     margin-top: 5px;
   }
- 
+.name-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.name-row input {
+  flex: 1;
+}
+
+.row-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.row-group input {
+  flex: 1;
+}
+.row-group select {
+  flex: 1;
+}
+.row-group input[type="checkbox"] {
+  flex: 0;
+  width: auto;
+}

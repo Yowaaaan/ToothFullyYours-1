@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="sign up css.css">
-    <script type="module" src="Sign Up.js" defer></script>
-    <!-- Include SweetAlert2 via CDN in your HTML head -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="sign up css.css" />
+  <script type="module" src="Sign Up.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div class="signup-container">
-        <h2>Create an Account</h2>
-        <form>
-            <input type="email" placeholder="Email" id="email" required><br>
-            <input type="password" placeholder="Password" id="password" required><br>
-          
-            <div class="form-group">
-              <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-              <div id="errorMessage" class="error">Passwords do not match</div>
-            </div>
-          
-            <button id="submit" type="submit">Sign Up</button>
-          </form>          
-        <p class="login-link">
-            Already have an account? 
-            <a href="Untitled-1.html">Log in</a>
-          </p>
-          
-    </div>
+  <div class="signup-container">
+    <h2>Create an Account</h2>
+   <form id="signupForm">
+
+  <div class="row-group">
+    <input type="text" placeholder="First Name" id="firstName" required>
+    <input type="text" placeholder="Last Name" id="lastName" required>
+  </div>
+
+  <div class="row-group">
+    <input type="email" placeholder="Email Address" id="email" required>
+    <input type="tel"placeholder="Contact Number"  id="contactNumber" required>
+  </div>
+
+  <input type="password" placeholder="Password" id="password" required>
+  <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+
+  <div id="errorMessage" class="error">Passwords do not match</div>
+
+  <button id="submit" type="submit">Sign Up</button>
+</form>
+
+
+    <p class="login-link">
+      Already have an account? 
+      <a href="Untitled-1.html">Log in</a>
+    </p>
+  </div>
+
+  <!-- Inline script to restrict contact number input -->
+  <script>
+    const contactNumberInput = document.getElementById('contactNumber');
+
+    contactNumberInput.addEventListener('input', function () {
+      this.value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+    });
+  </script>
 </body>
 </html>

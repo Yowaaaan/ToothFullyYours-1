@@ -68,35 +68,35 @@
 
   <!-- Inline JS -->
   <script>
-    // Restrict contact number input to digits only
-    document.getElementById('contactNumber').addEventListener('input', function () {
-      this.value = this.value.replace(/\D/g, '');
-    });
+  // Restrict contact number input to digits only and max 10 digits
+  document.getElementById('contactNumber').addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, '').slice(0, 11);
+  });
 
-    // Toggle Password Visibility
-    document.querySelectorAll(".toggle-password").forEach(icon => {
-      icon.addEventListener("click", function () {
-        const input = document.querySelector(this.getAttribute("toggle"));
-        const type = input.getAttribute("type") === "password" ? "text" : "password";
-        input.setAttribute("type", type);
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-      });
+  // Toggle Password Visibility
+  document.querySelectorAll(".toggle-password").forEach(icon => {
+    icon.addEventListener("click", function () {
+      const input = document.querySelector(this.getAttribute("toggle"));
+      const type = input.getAttribute("type") === "password" ? "text" : "password";
+      input.setAttribute("type", type);
+      this.classList.toggle("fa-eye");
+      this.classList.toggle("fa-eye-slash");
     });
+  });
 
-    // Password match validation
-    document.getElementById("signupForm").addEventListener("submit", function (e) {
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
-      const errorMessage = document.getElementById("errorMessage");
+  // Password match validation
+  document.getElementById("signupForm").addEventListener("submit", function (e) {
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const errorMessage = document.getElementById("errorMessage");
 
-      if (password !== confirmPassword) {
-        e.preventDefault();
-        errorMessage.style.display = "block";
-      } else {
-        errorMessage.style.display = "none";
-      }
-    });
-  </script>
+    if (password !== confirmPassword) {
+      e.preventDefault();
+      errorMessage.style.display = "block";
+    } else {
+      errorMessage.style.display = "none";
+    }
+  });
+</script>
 </body>
 </html>

@@ -36,24 +36,11 @@
   </header>
 
   <main>
-    <section class="testimonials-section">
-      <h2>What Our Patients Say</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>"Toothfully Yours made me feel so comfortable. The staff are incredibly kind and professional!"</p>
-          <h4>- Angela R.</h4>
-        </div>
-        <div class="testimonial">
-          <p>"Super clean clinic with the latest technology. Highly recommend Dr. Kenjin and team!"</p>
-          <h4>- Marco T.</h4>
-        </div>
-        <div class="testimonial">
-          <p>"The best dental experience I've had. Painless, fast, and the results were amazing."</p>
-          <h4>- Joanna M.</h4>
-        </div>
+    <div class="app-download-card" id="app-download-card">
+      <h2>Download Our App</h2>
+      <p>Available in Android</p>
+      <a href="https://github.com/Yowaaaan/ToothFullyYours-1/releases/download/app/ToothfullyYours.apk" download class="download-btn">Download APK</a>
       </div>
-    </section>
-
     <section class="highlights-section fade-in">
       <h2>Why Choose Toothfully Yours?</h2>
       <div class="highlight-cards">
@@ -72,6 +59,13 @@
           <h3>Gentle & Caring</h3>
           <p>We treat every patient like family, ensuring a stress-free and relaxing experience.</p>
         </div>
+        <div class="highlight-card">
+  <img src="sad123123.jpg" alt="Ratings" />
+  <h3>Patient Review</h3>
+  <p>Patients appreciate our attention to detail and compassionate care</p>
+  <a href="reviewcards.html" class="review-btn">Read Reviews</a>
+</div>
+
       </div>
     </section>
   </main>
@@ -79,6 +73,16 @@
   <footer>
     <p>&copy; 2025 Toothfully Yours Clinic. All rights reserved.</p>
   </footer>
+  <script>
+        const isWebView = /(wv|WebView|(Android(?!.*Chrome)))/i.test(navigator.userAgent);
+
+        window.addEventListener("DOMContentLoaded", () => {
+            if (isWebView) {
+                const appCard = document.getElementById("app-download-card");
+                appCard.style.display = "none";
+            }
+        });
+    </script>
 </body>
 
 </html>

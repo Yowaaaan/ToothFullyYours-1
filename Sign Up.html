@@ -4,34 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign Up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="sign up css.css" />
   <script type="module" src="Sign Up.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+<nav class="navbar">
+      <div class="logo">Tooth Fully Yours</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="servicemainpage.html">Services</a></li>
+        <li><a href="contactdoctorsmain.html">Doctors</a></li>
+        <li><a href="contactmain.html">Contact</a></li>
+        <li><a href="aboutmain.html">About</a></li>
+      </ul>
+    </nav>
   <div class="signup-container">
     <h2>Create an Account</h2>
-   <form id="signupForm">
+    <form id="signupForm">
 
-  <div class="row-group">
-    <input type="text" placeholder="First Name" id="firstName" required>
-    <input type="text" placeholder="Last Name" id="lastName" required>
-  </div>
+      <div class="row-group">
+        <div class="input-icon-group">
+          <input type="text" placeholder="First Name" id="firstName" required>
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="input-icon-group">
+          <input type="text" placeholder="Last Name" id="lastName" required>
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
 
-  <div class="row-group">
-    <input type="email" placeholder="Email Address" id="email" required>
-    <input type="tel"placeholder="Contact Number"  id="contactNumber" required>
-  </div>
+      <div class="row-group">
+        <div class="input-icon-group">
+          <input type="email" placeholder="Email Address" id="email" required>
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="input-icon-group">
+          <input type="tel" placeholder="Contact Number" id="contactNumber" required>
+          <i class="fa-solid fa-phone"></i>
+        </div>
+      </div>
 
-  <input type="password" placeholder="Password" id="password" required>
-  <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+      <div class="input-icon-group">
+        <input type="password" id="password" placeholder="Password" required>
+        <i class="fas fa-eye toggle-password" toggle="#password"></i>
+      </div>
 
+      <div class="input-icon-group">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <i class="fas fa-eye toggle-password" toggle="#confirmPassword"></i>
+      </div>
 
-  <div id="errorMessage" class="error">Passwords do not match</div>
+      <div id="errorMessage" class="error">Passwords do not match</div>
 
-  <button id="submit" type="submit">Sign Up</button>
-</form>
-
+      <button id="submit" type="submit">Sign Up</button>
+    </form>
 
     <p class="login-link">
       Already have an account? 
@@ -39,12 +67,36 @@
     </p>
   </div>
 
-  <!-- Inline script to restrict contact number input -->
+  <!-- Inline JS -->
   <script>
-    const contactNumberInput = document.getElementById('contactNumber');
+    // Restrict contact number input to digits only
+    document.getElementById('contactNumber').addEventListener('input', function () {
+      this.value = this.value.replace(/\D/g, '');
+    });
 
-    contactNumberInput.addEventListener('input', function () {
-      this.value = this.value.replace(/\D/g, ''); // Remove non-digit characters
+    // Toggle Password Visibility
+    document.querySelectorAll(".toggle-password").forEach(icon => {
+      icon.addEventListener("click", function () {
+        const input = document.querySelector(this.getAttribute("toggle"));
+        const type = input.getAttribute("type") === "password" ? "text" : "password";
+        input.setAttribute("type", type);
+        this.classList.toggle("fa-eye");
+        this.classList.toggle("fa-eye-slash");
+      });
+    });
+
+    // Password match validation
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const errorMessage = document.getElementById("errorMessage");
+
+      if (password !== confirmPassword) {
+        e.preventDefault();
+        errorMessage.style.display = "block";
+      } else {
+        errorMessage.style.display = "none";
+      }
     });
   </script>
 </body>

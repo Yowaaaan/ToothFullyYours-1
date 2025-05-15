@@ -88,4 +88,65 @@
             }
           }
           
-    
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0077b6;
+  padding: 1rem 2rem;
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+.signup-container {
+  margin-top: 70px;
+}
+.row-group input[type="checkbox"] {
+    flex: 0;
+    width: auto;
+}
+
+.input-icon-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon-group input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.input-icon-group i {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #c9d6e0;
+    font-size: 18px;
+}
